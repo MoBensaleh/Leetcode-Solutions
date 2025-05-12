@@ -1,4 +1,4 @@
-# Last updated: 5/12/2025, 12:41:53 PM
+# Last updated: 5/12/2025, 12:43:27 PM
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         cols = defaultdict(set)
