@@ -1,9 +1,15 @@
-# Last updated: 5/14/2025, 8:24:21 PM
+# Last updated: 5/14/2025, 8:26:04 PM
 class Solution:
-    def removeDuplicates(self, nums: list[int]) -> int:
-        l = 1
-        for r in range(1, len(nums)):
-            if nums[r] != nums[r - 1]:
-                nums[l] = nums[r]
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = 0, len(numbers) - 1
+
+        while l < r:
+            curSum = numbers[l] + numbers[r]
+
+            if curSum > target:
+                r -= 1
+            elif curSum < target:
                 l += 1
-        return l
+            else:
+                return [l + 1, r + 1]
+        return []
