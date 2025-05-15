@@ -1,14 +1,19 @@
-# Last updated: 5/14/2025, 8:28:02 PM
+# Last updated: 5/14/2025, 8:29:08 PM
 class Solution:
-    def maxArea(self, heights: List[int]) -> int:
-        l, r = 0, len(heights) - 1
-        res = 0
+    def trap(self, height: List[int]) -> int:
+        if not height:
+            return 0
 
+        l, r = 0, len(height) - 1
+        leftMax, rightMax = height[l], height[r]
+        res = 0
         while l < r:
-            area = min(heights[l], heights[r]) * (r - l)
-            res = max(res, area)
-            if heights[l] <= heights[r]:
+            if leftMax < rightMax:
                 l += 1
+                leftMax = max(leftMax, height[l])
+                res += leftMax - height[l]
             else:
                 r -= 1
+                rightMax = max(rightMax, height[r])
+                res += rightMax - height[r]
         return res
