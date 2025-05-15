@@ -1,14 +1,28 @@
-# Last updated: 5/14/2025, 8:32:40 PM
+# Last updated: 5/14/2025, 8:33:07 PM
 class Solution:
-    def maxArea(self, heights: List[int]) -> int:
-        l, r = 0, len(heights) - 1
-        res = 0
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
 
-        while l < r:
-            area = min(heights[l], heights[r]) * (r - l)
-            res = max(res, area)
-            if heights[l] <= heights[r]:
-                l += 1
-            else:
-                r -= 1
+        for i, a in enumerate(nums):
+            if a > 0:
+                break
+
+            if i > 0 and a == nums[i - 1]:
+                continue
+
+            l, r = i + 1, len(nums) - 1
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+                        
         return res
