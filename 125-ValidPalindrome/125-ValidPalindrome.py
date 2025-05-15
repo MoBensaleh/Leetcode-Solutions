@@ -1,19 +1,14 @@
-# Last updated: 5/14/2025, 8:18:35 PM
+# Last updated: 5/14/2025, 8:20:29 PM
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        l, r = 0, len(s) - 1
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        idx1 , idx2 = 0,0
+        newStr = ""
+        while idx1 < len(word1) and idx2 < len(word2):
+            newStr += word1[idx1]
+            newStr += word2[idx2]
+            idx1 +=1
+            idx2 +=1
 
-        while l < r:
-            while l < r and not self.alphaNum(s[l]):
-                l += 1
-            while r > l and not self.alphaNum(s[r]):
-                r -= 1
-            if s[l].lower() != s[r].lower():
-                return False
-            l, r = l + 1, r - 1
-        return True
-    
-    def alphaNum(self, c):
-        return (ord('A') <= ord(c) <= ord('Z') or 
-                ord('a') <= ord(c) <= ord('z') or 
-                ord('0') <= ord(c) <= ord('9'))
+        newStr += word1[idx1:]
+        newStr += word2[idx2:]
+        return newStr
