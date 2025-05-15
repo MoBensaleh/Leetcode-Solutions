@@ -1,4 +1,4 @@
-# Last updated: 5/14/2025, 8:37:23 PM
+# Last updated: 5/14/2025, 8:37:50 PM
 class Solution:
     def removeDuplicates(self, nums: list[int]) -> int:
         l = 1
